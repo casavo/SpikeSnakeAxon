@@ -1,11 +1,9 @@
-package spikeSnakeAxon
+package spikeSnakeAxon.commands
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier
 import java.util.*
 
-data class CreatePropertyCommand(
-
+data class EvaluatePropertyCommand (
     @TargetAggregateIdentifier
     val propertyId: UUID,
-    val zipCode: String
 )

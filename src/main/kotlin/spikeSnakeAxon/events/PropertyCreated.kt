@@ -1,4 +1,4 @@
-package spikeSnakeAxon
+package spikeSnakeAxon.events
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier
 import java.util.*

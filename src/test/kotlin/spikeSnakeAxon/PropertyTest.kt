@@ -3,6 +3,9 @@ package spikeSnakeAxon
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import spikeSnakeAxon.commands.CreatePropertyCommand
+import spikeSnakeAxon.domain.Property
+import spikeSnakeAxon.events.PropertyCreated
 import java.util.*
 
 class PropertyTest {
