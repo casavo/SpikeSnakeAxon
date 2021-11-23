@@ -9,15 +9,12 @@ import java.util.*
 
 @AggregateRoot
 class Property {
-    private lateinit var zipCode: String
-
     @AggregateIdentifier
     private lateinit var propertyId: UUID
-
-    constructor()
+    private lateinit var zipCode: String
 
     @CommandHandler
-    constructor(command: CreatePropertyCommand) {
+    fun handleCommand(command: CreatePropertyCommand) {
         val aggregateId = command.propertyId
         apply(PropertyCreated(aggregateId, command.zipCode))
     }

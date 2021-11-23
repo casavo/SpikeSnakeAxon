@@ -1,5 +1,6 @@
 package spikeSnakeAxon
 
+import org.axonframework.modelling.command.TargetAggregateIdentifier
 import java.util.*
 
 data class PropertyCreated(
