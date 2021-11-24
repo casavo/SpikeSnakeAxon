@@ -7,9 +7,11 @@ import org.axonframework.modelling.command.AggregateLifecycle.apply
 import org.axonframework.modelling.command.AggregateRoot
 import spikeSnakeAxon.commands.CreatePropertyCommand
 import spikeSnakeAxon.commands.EvaluatePropertyCommand
-import spikeSnakeAxon.domain.service.EvaValuationService
+import spikeSnakeAxon.domain.service.EvaService
 import spikeSnakeAxon.events.PropertyCreated
+import spikeSnakeAxon.events.PropertyValuated
 import java.util.*
+import kotlin.properties.Delegates
 
 @AggregateRoot
 class Property {
@@ -17,7 +19,10 @@ class Property {
     @AggregateIdentifier
     private lateinit var propertyId: UUID
     private lateinit var zipCode: String
-    private lateinit var eva: EvaValuationService // TODO: question: is it correct to use an external service in an aggregate?
+    private lateinit var propertyData: Any
+    private var valuation by Delegates.notNull<Double>()
+
+    lateinit var eva: EvaService
 
     constructor()
 
@@ -28,15 +33,21 @@ class Property {
     }
 
     @CommandHandler
-    constructor(command: EvaluatePropertyCommand){
-        // TODO: evaluate property using eva
-        // TODO: emit related event.
+    constructor(command: EvaluatePropertyCommand, injectedEva: EvaService){
+        eva = injectedEva
+        val valuation = eva.valuateProperty(propertyData)
+        apply(PropertyValuated(command.propertyId, valuation))
     }
 
     @EventSourcingHandler
     fun on(event: PropertyCreated) {
-        propertyId = event.propertyId
+        propertyId = event.propertyId //todo: this should be done by the framewrok, isn't it?
         zipCode = event.zipCode
+    }
+
+    @EventSourcingHandler
+    fun on(event: PropertyValuated) {
+        valuation = event.valuation
     }
 
 }
