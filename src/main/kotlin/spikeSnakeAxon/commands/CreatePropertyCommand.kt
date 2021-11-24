@@ -7,5 +7,6 @@ data class CreatePropertyCommand(
 
     @TargetAggregateIdentifier
     val propertyId: UUID,
-    val zipCode: String
+    val zipCode: String,
+    val data: Map<String, String>
 )

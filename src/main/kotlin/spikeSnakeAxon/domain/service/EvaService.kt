@@ -1,10 +1,13 @@
 package spikeSnakeAxon.domain.service
 
-import java.util.*
-import javax.enterprise.context.ApplicationScoped
+import org.springframework.stereotype.Service
 
-@ApplicationScoped
-class EvaService {
+interface EvaluationService{
+    abstract fun valuateProperty(propertyData: Any): Double
+}
 
-    fun valuateProperty(propertyData: Any) = Math.random() * 100
+@Service
+class EvaService: EvaluationService {
+
+    override fun valuateProperty(propertyData: Any) = Math.random() * 100
 }

@@ -5,5 +5,6 @@ import java.util.*
 
 data class PropertyCreated(
     val propertyId: UUID,
-    val zipCode: String
+    val zipCode: String,
+    val data: Map<String, String>
 )

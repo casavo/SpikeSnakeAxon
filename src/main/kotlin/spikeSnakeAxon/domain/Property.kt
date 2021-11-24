@@ -5,9 +5,11 @@ import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle.apply
 import org.axonframework.modelling.command.AggregateRoot
+import org.springframework.beans.factory.annotation.Autowired
 import spikeSnakeAxon.commands.CreatePropertyCommand
 import spikeSnakeAxon.commands.EvaluatePropertyCommand
 import spikeSnakeAxon.domain.service.EvaService
+import spikeSnakeAxon.domain.service.EvaluationService
 import spikeSnakeAxon.events.PropertyCreated
 import spikeSnakeAxon.events.PropertyValuated
 import java.util.*
@@ -20,22 +22,21 @@ class Property {
     private lateinit var propertyId: UUID
     private lateinit var zipCode: String
     private lateinit var propertyData: Any
-    private var valuation by Delegates.notNull<Double>()
+    private var valuation: Double? = null
 
-    lateinit var eva: EvaService
 
     constructor()
+
 
     @CommandHandler
     constructor(command: CreatePropertyCommand) {
         val aggregateId = command.propertyId
-        apply(PropertyCreated(aggregateId, command.zipCode))
+        apply(PropertyCreated(aggregateId, command.zipCode, command.data))
     }
 
     @CommandHandler
-    constructor(command: EvaluatePropertyCommand, injectedEva: EvaService){
-        eva = injectedEva
-        val valuation = eva.valuateProperty(propertyData)
+    constructor(command: EvaluatePropertyCommand, evaluationService: EvaluationService){
+        val valuation = evaluationService.valuateProperty(propertyData)
         apply(PropertyValuated(command.propertyId, valuation))
     }
 
@@ -43,6 +44,7 @@ class Property {
     fun on(event: PropertyCreated) {
         propertyId = event.propertyId //todo: this should be done by the framewrok, isn't it?
         zipCode = event.zipCode
+        propertyData = event.data
     }
 
     @EventSourcingHandler
