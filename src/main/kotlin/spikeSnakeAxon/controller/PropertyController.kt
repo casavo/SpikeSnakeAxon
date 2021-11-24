@@ -6,8 +6,7 @@ import java.util.*
 import javax.ws.rs.*
 
 @Path("/v1/property")
-class Property(myCommandGateway: CommandGateway) {
-
+class PropertyController(myCommandGateway: CommandGateway) {
 
     private var commandGateway: CommandGateway = myCommandGateway
 
