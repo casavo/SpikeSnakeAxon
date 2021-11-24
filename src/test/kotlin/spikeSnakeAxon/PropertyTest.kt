@@ -3,7 +3,9 @@ package spikeSnakeAxon
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito
+import org.mockito.internal.matchers.Any
 import spikeSnakeAxon.commands.CreatePropertyCommand
 import spikeSnakeAxon.commands.EvaluatePropertyCommand
 import spikeSnakeAxon.domain.Property
@@ -14,31 +16,36 @@ import java.util.*
 
 class PropertyTest {
     private lateinit var fixture: AggregateTestFixture<Property>
-
+    private val mockedEvaluationService =  Mockito.mock(EvaluationService::class.java)
+    private val valuation = 78.0
+    private val propertyData = mapOf("City" to "milan")
 
     @BeforeEach
     fun setUp() {
         fixture = AggregateTestFixture(Property::class.java)
-        fixture.registerInjectableResource(
-            Mockito.mock(EvaluationService::class.java)
-        )
+        fixture.registerInjectableResource(mockedEvaluationService)
+
+        Mockito.`when`(
+            mockedEvaluationService.valuateProperty(propertyData)
+        ).thenReturn(valuation)
     }
 
     @Test
     fun `create property`() {
         val propertyId = UUID.randomUUID()
+
         fixture.givenNoPriorActivity()
-            .`when`(CreatePropertyCommand(propertyId, "zipCode", mapOf("City" to "milan")))
-            .expectEvents(PropertyCreated(propertyId, "zipCode", mapOf("City" to "milan")))
+            .`when`(CreatePropertyCommand(propertyId, "zipCode", propertyData))
+            .expectEvents(PropertyCreated(propertyId, "zipCode",propertyData))
     }
 
     @Test
     fun `evaluate property`() {
         val propertyId = UUID.randomUUID()
 
-        fixture.given(PropertyCreated(propertyId, "zipCode", mapOf("City" to "milan")))
+        // FIXME: fix this test.
+        fixture.given(PropertyCreated(propertyId, "zipCode",propertyData))
             .`when`(EvaluatePropertyCommand(propertyId))
-            .expectSuccessfulHandlerExecution()
-            .expectEvents(PropertyValuated(propertyId, 2222.0))
+            .expectEvents(PropertyValuated(propertyId, valuation))
     }
 }

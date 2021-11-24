@@ -27,7 +27,6 @@ class Property {
 
     constructor()
 
-
     @CommandHandler
     constructor(command: CreatePropertyCommand) {
         val aggregateId = command.propertyId
@@ -42,7 +41,7 @@ class Property {
 
     @EventSourcingHandler
     fun on(event: PropertyCreated) {
-        propertyId = event.propertyId //todo: this should be done by the framewrok, isn't it?
+        propertyId = event.propertyId
         zipCode = event.zipCode
         propertyData = event.data
     }
