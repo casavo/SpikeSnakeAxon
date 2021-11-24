@@ -5,15 +5,12 @@ import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle.apply
 import org.axonframework.modelling.command.AggregateRoot
-import org.springframework.beans.factory.annotation.Autowired
 import spikeSnakeAxon.commands.CreatePropertyCommand
 import spikeSnakeAxon.commands.EvaluatePropertyCommand
-import spikeSnakeAxon.domain.service.EvaService
 import spikeSnakeAxon.domain.service.EvaluationService
 import spikeSnakeAxon.events.PropertyCreated
 import spikeSnakeAxon.events.PropertyValuated
 import java.util.*
-import kotlin.properties.Delegates
 
 @AggregateRoot
 class Property {
