@@ -4,6 +4,7 @@ import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle.apply
+import org.axonframework.modelling.command.AggregateMember
 import org.axonframework.modelling.command.AggregateRoot
 import spikeSnakeAxon.commands.CreatePropertyCommand
 import spikeSnakeAxon.commands.EvaluatePropertyCommand
