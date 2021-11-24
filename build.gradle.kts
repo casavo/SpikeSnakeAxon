@@ -23,6 +23,8 @@ dependencies {
     implementation("org.axonframework", "axon-eventsourcing")
     implementation("org.axonframework", "axon-messaging")
     implementation("org.axonframework", "axon-modelling")
+    implementation("org.axonframework", "axon-spring-boot-starter")
+    implementation("org.springframework.boot", "spring-boot-starter-data-jpa", "2.0.6.RELEASE")
 
     testImplementation("org.axonframework", "axon-test")
     testImplementation(platform("org.junit:junit-bom:5+"))
