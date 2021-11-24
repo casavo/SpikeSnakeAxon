@@ -43,7 +43,6 @@ class PropertyTest {
     fun `evaluate property`() {
         val propertyId = UUID.randomUUID()
 
-        // FIXME: fix this test.
         fixture.given(PropertyCreated(propertyId, "zipCode",propertyData))
             .`when`(EvaluatePropertyCommand(propertyId))
             .expectEvents(PropertyValuated(propertyId, valuation))

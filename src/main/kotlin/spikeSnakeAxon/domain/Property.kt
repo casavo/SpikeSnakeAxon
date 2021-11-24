@@ -34,7 +34,7 @@ class Property {
     }
 
     @CommandHandler
-    constructor(command: EvaluatePropertyCommand, evaluationService: EvaluationService){
+    fun handle(command: EvaluatePropertyCommand, evaluationService: EvaluationService){
         val valuation = evaluationService.valuateProperty(propertyData)
         apply(PropertyValuated(command.propertyId, valuation))
     }
