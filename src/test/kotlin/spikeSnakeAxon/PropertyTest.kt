@@ -1,5 +1,6 @@
 package spikeSnakeAxon
 
+import io.quarkus.test.junit.QuarkusTest
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -8,6 +9,7 @@ import spikeSnakeAxon.domain.Property
 import spikeSnakeAxon.events.PropertyCreated
 import java.util.*
 
+@QuarkusTest
 class PropertyTest {
     private lateinit var fixture: AggregateTestFixture<Property>
 
