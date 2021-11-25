@@ -2,9 +2,9 @@ package spikeSnakeAxon
 
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.axonframework.eventhandling.EventHandler
-import org.springframework.stereotype.Component
+import org.springframework.stereotype.Service
 
-@Component
+@Service
 class ValuatePropertyPolicy {
 
     @EventHandler
