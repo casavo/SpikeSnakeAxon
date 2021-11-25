@@ -14,6 +14,18 @@ services:
       - '8224:8224'
     networks:
       - axon-demo
+  db:
+    image: postgres
+    volumes:
+      - ./pg/db:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=bidding_event_store
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=pass
+    ports:
+      - '5432:5432'
+    networks:
+      - axon-demo
 
 #volumes:
 #  axonserver-data:

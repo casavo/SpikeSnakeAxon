@@ -23,6 +23,7 @@ dependencies {
     implementation(platform("org.axonframework:axon-bom:4.5.+"))
     implementation("org.axonframework", "axon-spring-boot-starter")
     implementation("org.springframework.boot:spring-boot-starter-web:2.6.0")
+    implementation("org.springframework.boot:spring-boot-starter-data-jdbc:2.6.0")
 
     testImplementation("org.axonframework", "axon-test")
     testImplementation(platform("org.junit:junit-bom:5+"))
