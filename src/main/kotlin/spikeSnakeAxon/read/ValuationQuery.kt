@@ -1,0 +1,3 @@
+package spikeSnakeAxon.read
+
+class ValuationQuery

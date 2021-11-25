@@ -1,4 +1,4 @@
-package spikeSnakeAxon.app.events
+package spikeSnakeAxon.events
 
 import java.util.*
 

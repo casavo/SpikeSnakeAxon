@@ -4,9 +4,13 @@ import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
-import spikeSnakeAxon.app.events.PropertyCreatedEvent
-import spikeSnakeAxon.app.events.PropertyValuated
+import spikeSnakeAxon.events.PropertyCreatedEvent
+import spikeSnakeAxon.events.PropertyValuated
 import spikeSnakeAxon.app.write.*
+import spikeSnakeAxon.write.CreatePropertyCommand
+import spikeSnakeAxon.write.EvaluatePropertyCommand
+import spikeSnakeAxon.write.EvaluationService
+import spikeSnakeAxon.write.PropertyAggregate
 import java.util.*
 
 class PropertyTest {

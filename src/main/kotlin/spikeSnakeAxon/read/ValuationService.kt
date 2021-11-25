@@ -1,11 +1,11 @@
-package spikeSnakeAxon.app.read
+package spikeSnakeAxon.read
 
 import org.axonframework.eventhandling.EventHandler
 import org.axonframework.queryhandling.QueryHandler
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component
-import spikeSnakeAxon.app.events.PropertyCreatedEvent
-import spikeSnakeAxon.app.events.PropertyValuated
+import spikeSnakeAxon.events.PropertyCreatedEvent
+import spikeSnakeAxon.events.PropertyValuated
 
 @Component
 class ValuationService {

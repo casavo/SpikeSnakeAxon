@@ -1,4 +1,4 @@
-package spikeSnakeAxon.app.read
+package spikeSnakeAxon.read
 
 import org.axonframework.messaging.responsetypes.ResponseTypes
 import org.axonframework.queryhandling.QueryGateway

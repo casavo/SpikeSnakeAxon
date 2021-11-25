@@ -1,4 +1,4 @@
-package spikeSnakeAxon.app.write
+package spikeSnakeAxon.write
 
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.springframework.beans.factory.annotation.Autowired

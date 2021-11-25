@@ -1,4 +1,4 @@
-package spikeSnakeAxon.app.read
+package spikeSnakeAxon.read
 
 import org.springframework.stereotype.Repository
 import java.util.*
