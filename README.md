@@ -11,3 +11,10 @@ This repo is used to familiarize with the [Axon Framework](https://axoniq.io/)
 - [How to write tests - Implementation](https://www.novatec-gmbh.de/en/blog/testing-event-sourcing-applications/)
 - [Aggregates commands and events example](https://www.novatec-gmbh.de/en/blog/event-sourcing-spring-boot-axon)
 - [Quarkus with Axon example](https://github.com/frezelth/axon-quarkus)
+
+
+## How to run it!
+- start the axon server with `docker-compose up`
+- execute the string application with `./gradlew bootRun`
+- trigger the related endpoint
+- explore the result [accessing the axon server UI](http//:localhost:8024) 

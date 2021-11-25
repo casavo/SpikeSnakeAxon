@@ -6,6 +6,7 @@ import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle.apply
 import org.axonframework.modelling.command.AggregateMember
 import org.axonframework.modelling.command.AggregateRoot
+import org.axonframework.spring.stereotype.Aggregate
 import org.springframework.beans.factory.annotation.Autowired
 import spikeSnakeAxon.commands.CreatePropertyCommand
 import spikeSnakeAxon.commands.EvaluatePropertyCommand
@@ -16,7 +17,7 @@ import spikeSnakeAxon.events.PropertyValuated
 import java.util.*
 import kotlin.properties.Delegates
 
-@AggregateRoot
+@Aggregate
 class Property {
 
     @AggregateIdentifier
