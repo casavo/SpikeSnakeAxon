@@ -1,8 +1,10 @@
-package spikeSnakeAxon
+package spikeSnakeAxon.app.read
 
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.axonframework.eventhandling.EventHandler
 import org.springframework.stereotype.Service
+import spikeSnakeAxon.app.write.EvaluatePropertyCommand
+import spikeSnakeAxon.app.write.PropertyCreatedEvent
 
 @Service
 class ValuatePropertyPolicy {

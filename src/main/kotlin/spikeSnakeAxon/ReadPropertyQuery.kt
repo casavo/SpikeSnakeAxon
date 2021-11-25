@@ -1,3 +1,0 @@
-package spikeSnakeAxon
-
-class ReadPropertyQuery

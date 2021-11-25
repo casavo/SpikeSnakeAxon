@@ -1,4 +1,4 @@
-package spikeSnakeAxon
+package spikeSnakeAxon.app.write
 
 import org.springframework.stereotype.Service
 

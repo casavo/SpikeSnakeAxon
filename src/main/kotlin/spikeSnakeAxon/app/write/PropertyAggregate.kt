@@ -1,17 +1,10 @@
-package spikeSnakeAxon
+package spikeSnakeAxon.app.write
 
 import org.axonframework.commandhandling.CommandHandler
-import org.axonframework.commandhandling.gateway.CommandGateway
-import org.axonframework.eventhandling.EventHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle.apply
 import org.axonframework.spring.stereotype.Aggregate
-import spikeSnakeAxon.CreatePropertyCommand
-import spikeSnakeAxon.EvaluatePropertyCommand
-import spikeSnakeAxon.EvaluationService
-import spikeSnakeAxon.PropertyCreatedEvent
-import spikeSnakeAxon.PropertyValuated
 import java.util.*
 
 @Aggregate

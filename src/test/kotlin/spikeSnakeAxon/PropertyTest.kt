@@ -4,6 +4,7 @@ import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
+import spikeSnakeAxon.app.write.*
 import java.util.*
 
 class PropertyTest {
