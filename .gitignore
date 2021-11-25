@@ -39,5 +39,7 @@ config/
 !config/.gitkeep
 data/
 !data/.gitkeep
+/datadb/
+!/datadb/.gitkeep
 /events
 !events/.gitkeep

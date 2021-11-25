@@ -15,6 +15,18 @@ services:
     networks:
       - axon-demo
 
+  postgres:
+    image: postgres
+    volumes:
+      - ./datadb/pg:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=postgresdb
+      - POSTGRES_USER=postgresuser
+      - POSTGRES_PASSWORD=postgrespass
+    ports:
+      - '54320:5432'
+
+
 #volumes:
 #  axonserver-data:
 #  axonserver-events:
