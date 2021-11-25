@@ -1,6 +1,8 @@
 package spikeSnakeAxon
 
 import org.axonframework.commandhandling.CommandHandler
+import org.axonframework.commandhandling.gateway.CommandGateway
+import org.axonframework.eventhandling.EventHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle.apply
@@ -13,7 +15,7 @@ import spikeSnakeAxon.PropertyValuated
 import java.util.*
 
 @Aggregate
-class Property {
+class PropertyAggregate {
 
     @AggregateIdentifier
     private lateinit var propertyId: UUID

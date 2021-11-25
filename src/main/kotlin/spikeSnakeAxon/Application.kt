@@ -17,12 +17,6 @@ class Application
 
 fun main(args: Array<String>) {
     val appContext = SpringApplication.run(Application::class.java, *args)
-
-    val commandGateway: CommandGateway = appContext.getBean(CommandGateway::class.java)
-    val createThisPropertyCommand = CreatePropertyCommand(UUID.randomUUID(), "12345", mapOf())
-
-    commandGateway.send<CreatePropertyCommand>(createThisPropertyCommand)
-
 }
 
 // TODO: move this controller: https://stackoverflow.com/questions/31318107/spring-boot-cannot-access-rest-controller-on-localhost-404

@@ -4,23 +4,17 @@ import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito
-import spikeSnakeAxon.CreatePropertyCommand
-import spikeSnakeAxon.EvaluatePropertyCommand
-import spikeSnakeAxon.Property
-import spikeSnakeAxon.domain.EvaluationService
-import spikeSnakeAxon.PropertyCreatedEvent
-import spikeSnakeAxon.PropertyValuated
 import java.util.*
 
 class PropertyTest {
-    private lateinit var fixture: AggregateTestFixture<Property>
+    private lateinit var fixture: AggregateTestFixture<PropertyAggregate>
     private val mockedEvaluationService =  Mockito.mock(EvaluationService::class.java)
     private val valuation = 78.0
     private val propertyData = mapOf("City" to "milan")
 
     @BeforeEach
     fun setUp() {
-        fixture = AggregateTestFixture(Property::class.java)
+        fixture = AggregateTestFixture(PropertyAggregate::class.java)
         fixture.registerInjectableResource(mockedEvaluationService)
 
         Mockito.`when`(
