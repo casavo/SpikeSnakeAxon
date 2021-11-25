@@ -2,6 +2,13 @@
 
 This repo is used to familiarize with the [Axon Framework](https://axoniq.io/)
 
+## How it is structured
+- single springboot application
+- the `write` package contains the command APIs and the event sourcing core.
+- the `read` package contains the read APIs and use a different read-model
+
+Both package could be moved in a different and separated microservices.
+
 ## Considerations:
 - Complexity is high. Maybe with springboot we better focus on real problems? (maybe not, we just have more magic and things running)
 - CQRS means lots of infrastructure (command but, event bus, event store ...)

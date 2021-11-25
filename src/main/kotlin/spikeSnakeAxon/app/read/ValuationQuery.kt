@@ -1,3 +1,3 @@
 package spikeSnakeAxon.app.read
 
-class ReadPropertyQuery
+class ValuationQuery

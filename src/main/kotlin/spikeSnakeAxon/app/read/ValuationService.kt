@@ -8,16 +8,16 @@ import spikeSnakeAxon.app.write.PropertyCreatedEvent
 import spikeSnakeAxon.app.write.PropertyValuated
 
 @Component
-class ReadProperty {
+class ValuationService {
 
     @Autowired
-    lateinit var propertyRepo: ReadPropertyRepository
+    lateinit var propertyRepo: ValuationRepository
 
     @QueryHandler
-    fun ask(q: ReadPropertyQuery): List<ReadPropertyModel> = propertyRepo.get()
+    fun ask(q: ValuationQuery): List<Valuation> = propertyRepo.get()
 
     @EventHandler
-    fun project(e: PropertyCreatedEvent) = propertyRepo.add(ReadPropertyModel(e.propertyId))
+    fun project(e: PropertyCreatedEvent) = propertyRepo.add(Valuation(e.propertyId))
 
     @EventHandler
     fun project(e: PropertyValuated) = propertyRepo.update(e.propertyId, e.valuation)

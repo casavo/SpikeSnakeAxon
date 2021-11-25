@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.RestController
 
 
 @RestController
-class ReadPropertyController() {
+class ValuationController() {
 
     @Autowired
     private lateinit var queryGateway: QueryGateway
 
     @GetMapping("/v1/property")
-    fun get() = queryGateway.query(ReadPropertyQuery(), ResponseTypes.multipleInstancesOf(ReadPropertyModel::class.java))
+    fun get() = queryGateway.query(ValuationQuery(), ResponseTypes.multipleInstancesOf(Valuation::class.java))
 }

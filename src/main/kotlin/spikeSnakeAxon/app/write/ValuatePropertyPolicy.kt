@@ -1,4 +1,4 @@
-package spikeSnakeAxon.app.read
+package spikeSnakeAxon.app.write
 
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.axonframework.eventhandling.EventHandler
