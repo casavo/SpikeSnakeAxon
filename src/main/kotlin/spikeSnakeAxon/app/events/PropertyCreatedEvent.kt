@@ -1,6 +1,5 @@
-package spikeSnakeAxon.app.write
+package spikeSnakeAxon.app.events
 
-import org.axonframework.modelling.command.TargetAggregateIdentifier
 import java.util.*
 
 data class PropertyCreatedEvent(

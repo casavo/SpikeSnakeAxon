@@ -39,5 +39,5 @@ config/
 !config/.gitkeep
 data/
 !data/.gitkeep
-events/
+/events
 !events/.gitkeep
