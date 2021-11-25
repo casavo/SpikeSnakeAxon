@@ -1,11 +1,9 @@
-package spikeSnakeAxon.commands
+package spikeSnakeAxon
 
 import org.axonframework.modelling.command.TargetAggregateIdentifier
 import java.util.*
 
-data class CreatePropertyCommand(
-
-    @TargetAggregateIdentifier
+data class PropertyCreatedEvent(
     val propertyId: UUID,
     val zipCode: String,
     val data: Map<String, String>

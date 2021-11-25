@@ -3,7 +3,9 @@
 This repo is used to familiarize with the [Axon Framework](https://axoniq.io/)
 
 ## Considerations:
-- Complexity is high. Maybe with springboot we better focus on real problems? (maybe not, we just have more magic)
+- Complexity is high. Maybe with springboot we better focus on real problems? (maybe not, we just have more magic and things running)
+- CQRS means lots of infrastructure (command but, event bus, event store ...)
+- we need axon enterprise (we are in containers, not VM)
 
 ## Useful resources
 - [Existing kotlin project](https://github.com/srbarrios/spring-axon-kotlin-example)

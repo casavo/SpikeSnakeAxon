@@ -1,4 +1,5 @@
-package spikeSnakeAxon.spring
+package spikeSnakeAxon
+
 import org.axonframework.commandhandling.gateway.CommandGateway
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication
@@ -6,18 +7,23 @@ import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
-import spikeSnakeAxon.commands.CreatePropertyCommand
+import spikeSnakeAxon.CreatePropertyCommand
 import java.util.*
 
 
 @SpringBootApplication
-open class Application
+class Application
 
 fun main(args: Array<String>) {
-        SpringApplication.run(Application::class.java, *args)
-    }
+    val appContext = SpringApplication.run(Application::class.java, *args)
+
+    val commandGateway: CommandGateway = appContext.getBean(CommandGateway::class.java)
+    val createThisPropertyCommand = CreatePropertyCommand(UUID.randomUUID(), "12345", mapOf())
+
+    commandGateway.send<CreatePropertyCommand>(createThisPropertyCommand)
+
+}
 
 // TODO: move this controller: https://stackoverflow.com/questions/31318107/spring-boot-cannot-access-rest-controller-on-localhost-404
 @RestController

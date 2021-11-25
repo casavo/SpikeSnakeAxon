@@ -34,3 +34,10 @@ nb-configuration.xml
 
 # Local environment
 .env
+
+config/
+!config/.gitkeep
+data/
+!data/.gitkeep
+events/
+!events/.gitkeep

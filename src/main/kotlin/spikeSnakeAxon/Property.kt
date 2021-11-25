@@ -1,21 +1,16 @@
-package spikeSnakeAxon.domain
+package spikeSnakeAxon
 
 import org.axonframework.commandhandling.CommandHandler
 import org.axonframework.eventsourcing.EventSourcingHandler
 import org.axonframework.modelling.command.AggregateIdentifier
 import org.axonframework.modelling.command.AggregateLifecycle.apply
-import org.axonframework.modelling.command.AggregateMember
-import org.axonframework.modelling.command.AggregateRoot
 import org.axonframework.spring.stereotype.Aggregate
-import org.springframework.beans.factory.annotation.Autowired
-import spikeSnakeAxon.commands.CreatePropertyCommand
-import spikeSnakeAxon.commands.EvaluatePropertyCommand
-import spikeSnakeAxon.domain.service.EvaService
-import spikeSnakeAxon.domain.service.EvaluationService
-import spikeSnakeAxon.events.PropertyCreated
-import spikeSnakeAxon.events.PropertyValuated
+import spikeSnakeAxon.CreatePropertyCommand
+import spikeSnakeAxon.EvaluatePropertyCommand
+import spikeSnakeAxon.EvaluationService
+import spikeSnakeAxon.PropertyCreatedEvent
+import spikeSnakeAxon.PropertyValuated
 import java.util.*
-import kotlin.properties.Delegates
 
 @Aggregate
 class Property {
@@ -32,7 +27,7 @@ class Property {
     @CommandHandler
     constructor(command: CreatePropertyCommand) {
         val aggregateId = command.propertyId
-        apply(PropertyCreated(aggregateId, command.zipCode, command.data))
+        apply(PropertyCreatedEvent(aggregateId, command.zipCode, command.data))
     }
 
     @CommandHandler
@@ -42,7 +37,7 @@ class Property {
     }
 
     @EventSourcingHandler
-    fun on(event: PropertyCreated) {
+    fun on(event: PropertyCreatedEvent) {
         propertyId = event.propertyId
         zipCode = event.zipCode
         propertyData = event.data

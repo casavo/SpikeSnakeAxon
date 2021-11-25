@@ -1,4 +1,4 @@
-package spikeSnakeAxon.domain.service
+package spikeSnakeAxon
 
 import org.springframework.stereotype.Service
 

@@ -3,15 +3,13 @@ package spikeSnakeAxon
 import org.axonframework.test.aggregate.AggregateTestFixture
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.mockito.ArgumentMatchers.any
 import org.mockito.Mockito
-import org.mockito.internal.matchers.Any
-import spikeSnakeAxon.commands.CreatePropertyCommand
-import spikeSnakeAxon.commands.EvaluatePropertyCommand
-import spikeSnakeAxon.domain.Property
-import spikeSnakeAxon.domain.service.EvaluationService
-import spikeSnakeAxon.events.PropertyCreated
-import spikeSnakeAxon.events.PropertyValuated
+import spikeSnakeAxon.CreatePropertyCommand
+import spikeSnakeAxon.EvaluatePropertyCommand
+import spikeSnakeAxon.Property
+import spikeSnakeAxon.domain.EvaluationService
+import spikeSnakeAxon.PropertyCreatedEvent
+import spikeSnakeAxon.PropertyValuated
 import java.util.*
 
 class PropertyTest {
@@ -36,14 +34,14 @@ class PropertyTest {
 
         fixture.givenNoPriorActivity()
             .`when`(CreatePropertyCommand(propertyId, "zipCode", propertyData))
-            .expectEvents(PropertyCreated(propertyId, "zipCode",propertyData))
+            .expectEvents(PropertyCreatedEvent(propertyId, "zipCode",propertyData))
     }
 
     @Test
     fun `evaluate property`() {
         val propertyId = UUID.randomUUID()
 
-        fixture.given(PropertyCreated(propertyId, "zipCode",propertyData))
+        fixture.given(PropertyCreatedEvent(propertyId, "zipCode",propertyData))
             .`when`(EvaluatePropertyCommand(propertyId))
             .expectEvents(PropertyValuated(propertyId, valuation))
     }
