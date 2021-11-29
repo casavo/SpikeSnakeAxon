@@ -1,5 +1,7 @@
 package spikeSnakeAxon
 
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 
@@ -11,4 +13,4 @@ fun main(args: Array<String>) {
     val appContext = SpringApplication.run(Application::class.java, *args)
 }
 
-// TODO: move this controller: https://stackoverflow.com/questions/31318107/spring-boot-cannot-access-rest-controller-on-localhost-404
+var logger: Logger = LoggerFactory.getLogger(Application::class.java)

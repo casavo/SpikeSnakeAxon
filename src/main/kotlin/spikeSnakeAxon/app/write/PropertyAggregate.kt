@@ -7,6 +7,7 @@ import org.axonframework.modelling.command.AggregateLifecycle.apply
 import org.axonframework.spring.stereotype.Aggregate
 import spikeSnakeAxon.app.events.PropertyCreatedEvent
 import spikeSnakeAxon.app.events.PropertyValuated
+import spikeSnakeAxon.logger
 import java.util.*
 
 @Aggregate
@@ -23,18 +24,21 @@ class PropertyAggregate {
 
     @CommandHandler
     constructor(command: CreatePropertyCommand) {
+        logger.info("PropertyAggregate - CommandHandler - Handle CreatePropertyCommand")
         val aggregateId = command.propertyId
         apply(PropertyCreatedEvent(aggregateId, command.zipCode, command.data))
     }
 
     @CommandHandler
     fun handle(command: EvaluatePropertyCommand, evaluationService: EvaluationService){
+        logger.info("PropertyAggregate - CommandHandler - Handle EvaluatePropertyCommand")
         val valuation = evaluationService.valuateProperty(propertyData)
         apply(PropertyValuated(command.propertyId, valuation))
     }
 
     @EventSourcingHandler
     fun on(event: PropertyCreatedEvent) {
+        logger.info("PropertyAggregate - EventSourcing - Handle PropertyCreatedEvent")
         propertyId = event.propertyId
         zipCode = event.zipCode
         propertyData = event.data
@@ -42,6 +46,7 @@ class PropertyAggregate {
 
     @EventSourcingHandler
     fun on(event: PropertyValuated) {
+        logger.info("PropertyAggregate - EventSourcing - Handle PropertyValuated")
         valuation = event.valuation
     }
 
